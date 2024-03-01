@@ -1,21 +1,28 @@
 import React, { ReactNode } from 'react'
 import styled from 'styled-components'
 import { background } from '../../Assets'
+import { useNavigate } from 'react-router-dom'
 
 type props = {
   content: ReactNode,
   close?: ()=>void,
-  position: 'center'|'right'|'left'
+  position: 'center'|'right'|'left',
+  closeRoute?: string
 }
 
-function ModalWrapper({content, close, position}:props) {
+function ModalWrapper({content, close, position, closeRoute}:props) {
+  const navigate = useNavigate()
   return (
     <div className={`w-screen h-screen z-50 fixed top-0 right-0 left-0 bottom-0 flex justify-${position === 'center'?'center':'end'} items-center bg-[rgb(0,0,0,.5)]`}>
         <div onClick={()=>{
           if(close){
             close()
-          }else{
-            window.history.back()
+          }
+          if(closeRoute){
+            navigate(closeRoute)
+          }
+          else{
+            navigate('/list')
           }
         }} className="w-full h-full absolute top-0 right-0 left-0 bottom-0 z-10"></div>
         

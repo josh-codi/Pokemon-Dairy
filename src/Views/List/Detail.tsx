@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import styled from 'styled-components';
 import Context from '../../store/context';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Stats from './Stats';
 import Similar from './Similar';
 import About from './About';
@@ -11,6 +11,7 @@ function Detail({pokemon}:{pokemon:{}}) {
     const [tab, setTab] = useState('About');
     const [theme, setTheme] = useState([])
     const params = useParams()
+    const navigate = useNavigate()
 
     useEffect(()=>{
         setTheme(state.theme)
@@ -87,9 +88,7 @@ function Detail({pokemon}:{pokemon:{}}) {
                 <div className="w-full h-full flex flex-col items-center overflow-hidden overflow-y-auto relative z-10">
                     <div className="sm:p-5 w-full sticky top-0">
                         <section style={{background: `linear-gradient(to bottom, ${theme[1]}, ${theme[0]})`}} className={`banner-board w-full min-h-[280px] sm:min-h-[340px] sm:rounded-2xl p-2 sm:p-5 relative`}>
-                            <div onClick={()=>{
-                                window.history.back()
-                            }} className="flex justify-center items-center cursor-pointer rounded-xl bg-white w-[50px] sm:w-[64px] h-[50px] sm:h-[64px] absolute top-[1rem] left-[1rem] sm:top-[1.25rem] sm:left-[1.25rem] shadow-md">
+                            <div onClick={()=>navigate('/list')} className="flex justify-center items-center cursor-pointer rounded-xl bg-white w-[50px] sm:w-[64px] h-[50px] sm:h-[64px] absolute top-[1rem] left-[1rem] sm:top-[1.25rem] sm:left-[1.25rem] shadow-md">
                                 <svg className={`w-[19px] h-[13px] sm:w-[22px] sm:h-[16px]`} viewBox="0 0 22 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M8.70009 15.0333C8.96676 14.7667 9.09476 14.4445 9.08409 14.0667C9.07343 13.6889 8.93431 13.3667 8.66676 13.1L4.90009 9.33335H19.7668C20.1445 9.33335 20.4614 9.20535 20.7174 8.94935C20.9734 8.69335 21.101 8.3769 21.1001 8.00001C21.1001 7.62224 20.9721 7.30535 20.7161 7.04935C20.4601 6.79335 20.1436 6.66579 19.7668 6.66668H4.90009L8.70009 2.86668C8.96676 2.60001 9.10009 2.28312 9.10009 1.91601C9.10009 1.5489 8.96676 1.23246 8.70009 0.966681C8.43342 0.700014 8.11654 0.566681 7.74943 0.566681C7.38231 0.566681 7.06587 0.700014 6.80009 0.966681L0.700092 7.06668C0.566759 7.20001 0.472092 7.34446 0.416092 7.50001C0.360092 7.65557 0.332535 7.82224 0.333424 8.00001C0.333424 8.17779 0.361427 8.34446 0.417427 8.50001C0.473427 8.65557 0.567648 8.80001 0.700092 8.93335L6.83343 15.0667C7.07787 15.3111 7.3832 15.4333 7.74943 15.4333C8.11565 15.4333 8.43254 15.3 8.70009 15.0333Z" fill="black"/>
                                 </svg>

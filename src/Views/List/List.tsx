@@ -111,7 +111,7 @@ function List() {
             </BottomNav>
             
             {
-                modalStatus && <ModalWrapper content={modalContent} position='right'/>
+                modalStatus && <ModalWrapper closeRoute='/list' content={modalContent} position='right'/>
             }
             </>}/>
     )
