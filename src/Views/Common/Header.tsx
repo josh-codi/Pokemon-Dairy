@@ -23,7 +23,7 @@ function Header() {
         <Container className='h-[75px] bg-white shadow-lg w-full flex items-center justify-between px-10 z-30'>
             <Brand className="flex items-center">
                 <img onClick={()=>navigate('/')} src={Logo} alt="" width={130} className='mt-7 mr-4 hover:scale-95 cursor-pointer'/>
-                <h1 onClick={()=>navigate('/')} className="text-[1.4rem] font-bold flex cursor-pointer">Poke <h1 style={{color: state.theme[0]}}>book</h1></h1>
+                <h1 onClick={()=>navigate('/')} className="text-[1.4rem] font-bold flex cursor-pointer">Poke <h1 style={{color: state?.theme?.[0]}}>book</h1></h1>
             </Brand>
             <Search className="w-[450px] flex h-[40px] border rounded-[2rem] items-center overflow-hidden shadow-md">
                 <div className="flex items-center justify-center w-[50px]">
@@ -34,20 +34,20 @@ function Header() {
                 <input placeholder='Enter pokemon name' type="text" className="w-full h-full text-sm text-gray-500" />
             </Search>
             <button onClick={()=>onModal()} className="min-w-[50px] w-[50px] min-h-[50px] h-[50px] rounded-full border border-gray-600 p-[0.3rem] group">
-                <div style={{backgroundColor: state.theme[0]}} className="w-full h-full rounded-full"></div>
+                <div style={{backgroundColor: state?.theme?.[0]}} className="w-full h-full rounded-full"></div>
             </button>
 
             {
                 modalStatus ? <ModalWrapper position='center' close={()=>{offModal()}} content={<div className='w-full h-[220px] flex flex-col'>
                     <section className="w-full min-h-[50px] flex items-center justify-center">Choose Theme</section>
                     <section className="w-full h-full bg-gray-200 flex items-center justify-center">
-                        <button onClick={()=>setThemeColor('primary')} style={{border: `${state.theme[0] === 'rgba(232,83,130,1)' && '1px solid'}`}} className="w-[60px] h-[60px] rounded-full hover:border border-gray-600 p-[0.3rem] mx-3 group">
+                        <button onClick={()=>setThemeColor('primary')} style={{border: `${state?.theme?.[0] === 'rgba(232,83,130,1)' && '1px solid'}`}} className="w-[60px] h-[60px] rounded-full hover:border border-gray-600 p-[0.3rem] mx-3 group">
                             <div className="w-full bg-primary h-full rounded-full"></div>
                         </button>
-                        <button onClick={()=>setThemeColor('secondary')} style={{border: `${state.theme[0] === 'rgba(57,186,223,1)' && '1px solid'}`}} className="w-[60px] h-[60px] rounded-full hover:border border-gray-600 p-[0.3rem] mx-3 group">
+                        <button onClick={()=>setThemeColor('secondary')} style={{border: `${state?.theme?.[0] === 'rgba(57,186,223,1)' && '1px solid'}`}} className="w-[60px] h-[60px] rounded-full hover:border border-gray-600 p-[0.3rem] mx-3 group">
                             <div className="w-full h-full bg-secondary rounded-full"></div>
                         </button>
-                        <button onClick={()=>setThemeColor('tertiary')} style={{border: `${state.theme[0] === 'rgba(225,167,37,1)' && '1px solid'}`}} className="w-[60px] h-[60px] rounded-full hover:border border-gray-600 p-[0.3rem] mx-3 group">
+                        <button onClick={()=>setThemeColor('tertiary')} style={{border: `${state?.theme?.[0] === 'rgba(225,167,37,1)' && '1px solid'}`}} className="w-[60px] h-[60px] rounded-full hover:border border-gray-600 p-[0.3rem] mx-3 group">
                             <div className="w-full h-full bg-tertiary rounded-full"></div>
                         </button>
                     </section>
